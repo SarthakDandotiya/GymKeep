@@ -60,7 +60,7 @@ export const globalStyles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 208,
+        marginBottom: 32,
         // marginBottom: 194,
         // borderColor: "red",
         // borderWidth: 1,
@@ -71,11 +71,11 @@ export const globalStyles = StyleSheet.create({
     },
     bicep: {
         position: "absolute",
-        top: 20,
+        top: 40,
         right: 0,
         zIndex: -10,
-        height: 275,
-        width: 275,
+        height: 288,
+        width: 288,
     },
     textInput: {
         height: 60,

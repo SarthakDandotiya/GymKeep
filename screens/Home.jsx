@@ -181,9 +181,10 @@ class Home extends Component {
                         source={require("../assets/bicep.png")}
                         style={globalStyles.bicep}
                     />
-                    <View style={{ flex: 1, justifyContent: "space-between" }}>
+                    {/* Content */}
+                    <View>
                         {/* New Workout Section */}
-                        <View style={{ marginBottom: 32, flex: 0 }}>
+                        <View style={{ marginBottom: 32 }}>
                             <Text style={globalStyles.heading}>New</Text>
                             <TextInput
                                 style={globalStyles.textInput}
@@ -204,7 +205,7 @@ class Home extends Component {
                             />
                         </View>
                         {/* Previous Section */}
-                        <View style={{ flex: 1 }}>
+                        <View>
                             <View
                                 style={{
                                     flex: 0,
@@ -229,8 +230,10 @@ class Home extends Component {
                                 </TouchableOpacity>
                             </View>
                             {/* Short List */}
-                            <ScrollView>
-                                {this.state.workouts.length < 4
+                            <ScrollView
+                                style={{ minHeight: 76, maxHeight: 232 }}
+                            >
+                                {this.state.workouts.length < 3
                                     ? this.state.workouts.map((item) => {
                                           return (
                                               <TouchableWorkoutListItem
@@ -241,7 +244,7 @@ class Home extends Component {
                                           );
                                       })
                                     : this.state.workouts
-                                          .slice(-4)
+                                          .slice(-3)
                                           .map((item) => {
                                               return (
                                                   <TouchableWorkoutListItem
