@@ -233,31 +233,41 @@ class Home extends Component {
                             <ScrollView
                                 style={{ minHeight: 76, maxHeight: 232 }}
                             >
-                                {this.state.workouts.length < 3
-                                    ? this.state.workouts.map((item) => {
-                                          return (
-                                              <TouchableWorkoutListItem
-                                                  key={item.startedAt}
-                                                  name={item.name}
-                                                  date={item.startedAt}
-                                              />
-                                          );
-                                      })
-                                    : this.state.workouts
-                                          .slice(-3)
-                                          .map((item) => {
-                                              return (
-                                                  <TouchableWorkoutListItem
-                                                      key={item.startedAt}
-                                                      name={item.name}
-                                                      date={item.startedAt}
-                                                      workout={item.workout}
-                                                      navigation={
-                                                          this.props.navigation
-                                                      }
-                                                  />
-                                              );
-                                          })}
+                                {this.state.workouts.length < 3 ? (
+                                    <View
+                                        style={{
+                                            flex: 1,
+                                            flexDirection: "column",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            height: 232,
+                                            backgroundColor: "#1a1a1a",
+                                        }}
+                                    >
+                                        <Text style={globalStyles.text}>
+                                            You need to have atleast 3 workouts
+                                        </Text>
+                                        <Text style={globalStyles.text555}>
+                                            Get going!
+                                        </Text>
+                                    </View>
+                                ) : (
+                                    this.state.workouts
+                                        .slice(-3)
+                                        .map((item) => {
+                                            return (
+                                                <TouchableWorkoutListItem
+                                                    key={item.startedAt}
+                                                    name={item.name}
+                                                    date={item.startedAt}
+                                                    workout={item.workout}
+                                                    navigation={
+                                                        this.props.navigation
+                                                    }
+                                                />
+                                            );
+                                        })
+                                )}
                             </ScrollView>
                         </View>
                     </View>
