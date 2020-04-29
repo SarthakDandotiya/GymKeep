@@ -1,11 +1,12 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableHighlight, Text, View } from "react-native";
 
 export default function TouchableWorkoutListItem({
     name,
     date,
     navigation,
     exercises,
+    longPressHandler,
 }) {
     let d = new Date(date);
     let formattedDate =
@@ -17,16 +18,16 @@ export default function TouchableWorkoutListItem({
     };
 
     return (
-        <TouchableOpacity
-            activeOpacity={0.8}
+        <TouchableHighlight
             onPress={() => navigation.navigate("CompletedWorkout", data)}
+            onLongPress={() => longPressHandler(date)}
             style={{ marginVertical: 8 }}
         >
             <View style={styles.item}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.date}>{formattedDate}</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableHighlight>
     );
 }
 

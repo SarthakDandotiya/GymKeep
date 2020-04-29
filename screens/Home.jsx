@@ -9,14 +9,22 @@ import {
     Keyboard,
 } from "react-native";
 import { globalStyles } from "../styles/global";
-import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
+import { TouchableHighlight, ScrollView } from "react-native-gesture-handler";
 import FlatButton from "../shared/button";
 import TouchableWorkoutListItem from "../shared/workoutListItem";
 import { WorkoutsContext } from "../WorkoutsContext";
 
 export default function Home({ navigation }) {
     const [workouts, setWorkouts] = useContext(WorkoutsContext);
-    const [workoutName, setWorkoutName] = useState("");
+    // const [workoutName, setWorkoutName] = useState("");
+
+    const longPressHandler = (timeStamp) => {
+        setWorkouts((oldWorkouts) => {
+            return oldWorkouts.filter(
+                (workout) => workout.startedAt != timeStamp
+            );
+        });
+    };
 
     const handleTextChange = (text) => {
         setWorkoutName(text);
@@ -32,8 +40,7 @@ export default function Home({ navigation }) {
                         <Text style={globalStyles.brand}>Gym</Text>
                         <Text style={globalStyles.brand}>Keep</Text>
                     </View>
-                    <TouchableOpacity
-                        activeOpacity={0.5}
+                    <TouchableHighlight
                         onPress={() => navigation.navigate("Options")}
                     >
                         <Image
@@ -41,7 +48,7 @@ export default function Home({ navigation }) {
                             // source={require("../assets/defaultUserImage.png")}
                             style={globalStyles.dp}
                         />
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                 </View>
                 {/* Image */}
                 <Image
@@ -76,8 +83,7 @@ export default function Home({ navigation }) {
                             }}
                         >
                             <Text style={globalStyles.heading}>Previous</Text>
-                            <TouchableOpacity
-                                activeOpacity={0.5}
+                            <TouchableHighlight
                                 onPress={() =>
                                     navigation.navigate("AllWorkouts")
                                 }
@@ -85,7 +91,7 @@ export default function Home({ navigation }) {
                                 <Text style={globalStyles.textGreen}>
                                     View All
                                 </Text>
-                            </TouchableOpacity>
+                            </TouchableHighlight>
                         </View>
                         {/* Short List */}
                         <ScrollView style={{ minHeight: 76, maxHeight: 232 }}>
@@ -116,6 +122,7 @@ export default function Home({ navigation }) {
                                             date={item.startedAt}
                                             exercises={item.exercises}
                                             navigation={navigation}
+                                            longPressHandler={longPressHandler}
                                         />
                                     );
                                 })

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StatusBar, TouchableOpacity, Image } from "react-native";
+import { Text, View, StatusBar, TouchableHighlight, Image } from "react-native";
 import { globalStyles } from "../styles/global";
 import { FlatList } from "react-native-gesture-handler";
 import ExerciseListItem from "../shared/exerciseListItem";
@@ -15,7 +15,7 @@ export default function CompletedWorkout({ navigation, route }) {
                     marginBottom: 8,
                 }}
             >
-                <TouchableOpacity
+                <TouchableHighlight
                     style={{
                         width: 20,
                         paddingVertical: 5,
@@ -26,7 +26,7 @@ export default function CompletedWorkout({ navigation, route }) {
                         source={require("../assets/cancel.png")}
                         style={globalStyles.icon}
                     />
-                </TouchableOpacity>
+                </TouchableHighlight>
                 <View style={{ marginTop: 64 }}>
                     <Text style={globalStyles.heading}>
                         {route.params.name}

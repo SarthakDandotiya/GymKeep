@@ -4,7 +4,7 @@ import {
     Text,
     View,
     StatusBar,
-    TouchableOpacity,
+    TouchableHighlight,
     Image,
     FlatList,
 } from "react-native";
@@ -15,6 +15,14 @@ import TouchableWorkoutListItem from "../shared/workoutListItem";
 export default function AllWorkouts({ navigation }) {
     const [workouts, setWorkouts] = useContext(WorkoutsContext);
 
+    const longPressHandler = (timeStamp) => {
+        setWorkouts((oldWorkouts) => {
+            return oldWorkouts.filter(
+                (workout) => workout.startedAt != timeStamp
+            );
+        });
+    };
+
     return (
         <View style={globalStyles.alternateContainer}>
             <StatusBar backgroundColor='#000000' barStyle='light-content' />
@@ -24,7 +32,7 @@ export default function AllWorkouts({ navigation }) {
                     marginBottom: 8,
                 }}
             >
-                <TouchableOpacity
+                <TouchableHighlight
                     style={{
                         width: 20,
                         paddingVertical: 5,
@@ -35,7 +43,7 @@ export default function AllWorkouts({ navigation }) {
                         source={require("../assets/arrow.png")}
                         style={globalStyles.icon}
                     />
-                </TouchableOpacity>
+                </TouchableHighlight>
                 <View style={{ marginTop: 64 }}>
                     <Text style={globalStyles.heading}>All Workouts</Text>
                 </View>
@@ -43,13 +51,14 @@ export default function AllWorkouts({ navigation }) {
             {/* List */}
             <FlatList
                 data={workouts}
-                keyExtractor={(item) => item.startedAt}
+                keyExtractor={(item) => item.startedAt.toString()}
                 renderItem={({ item }) => (
                     <TouchableWorkoutListItem
                         name={item.name}
                         date={item.startedAt}
                         exercises={item.exercises}
                         navigation={navigation}
+                        longPressHandler={longPressHandler}
                     />
                 )}
             />

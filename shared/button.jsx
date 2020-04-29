@@ -1,13 +1,13 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableHighlight, Text, View } from "react-native";
 
 export default function FlatButton({ text, onPress }) {
     return (
-        <TouchableOpacity activeOpacity={0.85} onPress={onPress}>
+        <TouchableHighlight onPress={onPress}>
             <View style={styles.button}>
                 <Text style={styles.text}>{text}</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableHighlight>
     );
 }
 
