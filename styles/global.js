@@ -10,6 +10,14 @@ export const globalStyles = StyleSheet.create({
         justifyContent: "space-between",
         // alignItems: "center",
     },
+    alternateContainer: {
+        flex: 1,
+        paddingVertical: 40,
+        paddingHorizontal: 32,
+        backgroundColor: "#121212",
+        flexDirection: "column",
+        // justifyContent: "space-between",
+    },
     text: {
         color: "#ffffff",
         fontSize: 16,
@@ -68,6 +76,11 @@ export const globalStyles = StyleSheet.create({
     dp: {
         height: 40,
         width: 40,
+    },
+    icon: {
+        height: 20,
+        width: 20,
+        padding: 5,
     },
     bicep: {
         position: "absolute",

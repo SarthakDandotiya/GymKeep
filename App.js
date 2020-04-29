@@ -8,6 +8,7 @@ import AllWorkouts from "./screens/AllWorkouts";
 import CompletedWorkout from "./screens/CompletedWorkout";
 import Home from "./screens/Home";
 import Options from "./screens/Options";
+import { WorkoutsProvider } from "./WorkoutsContext";
 
 const Stack = createStackNavigator();
 
@@ -22,21 +23,26 @@ export default function App() {
 
     if (fontsLoaded) {
         return (
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName='Home' headerMode='none'>
-                    <Stack.Screen name='Home' component={Home} />
-                    <Stack.Screen name='Options' component={Options} />
-                    <Stack.Screen
-                        name='ActiveWorkout'
-                        component={ActiveWorkout}
-                    />
-                    <Stack.Screen name='AllWorkouts' component={AllWorkouts} />
-                    <Stack.Screen
-                        name='CompletedWorkout'
-                        component={CompletedWorkout}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <WorkoutsProvider>
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName='Home' headerMode='none'>
+                        <Stack.Screen name='Home' component={Home} />
+                        <Stack.Screen name='Options' component={Options} />
+                        <Stack.Screen
+                            name='ActiveWorkout'
+                            component={ActiveWorkout}
+                        />
+                        <Stack.Screen
+                            name='AllWorkouts'
+                            component={AllWorkouts}
+                        />
+                        <Stack.Screen
+                            name='CompletedWorkout'
+                            component={CompletedWorkout}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </WorkoutsProvider>
         );
     } else {
         return (
