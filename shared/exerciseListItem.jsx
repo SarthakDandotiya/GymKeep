@@ -7,7 +7,11 @@ export default function ExerciseListItem({ exercise }) {
         <View style={styles.itemContainer}>
             <View style={styles.left}>
                 <Text style={globalStyles.text}>{exercise.name}</Text>
-                <Text style={globalStyles.text777}>{exercise.weight}kg</Text>
+                <Text style={globalStyles.text777}>
+                    {exercise.weight === 0 || exercise.weight === null
+                        ? "Body Weight"
+                        : exercise.weight + " Kg"}
+                </Text>
             </View>
             <Text style={styles.counts}>
                 {exercise.sets + " x " + exercise.reps}

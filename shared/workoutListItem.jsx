@@ -18,6 +18,7 @@ export default function TouchableWorkoutListItem({
 
     return (
         <TouchableOpacity
+            activeOpacity={0.8}
             onPress={() => navigation.navigate("CompletedWorkout", data)}
             style={{ marginVertical: 8 }}
         >

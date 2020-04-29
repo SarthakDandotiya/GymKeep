@@ -33,6 +33,7 @@ export default function Home({ navigation }) {
                         <Text style={globalStyles.brand}>Keep</Text>
                     </View>
                     <TouchableOpacity
+                        activeOpacity={0.5}
                         onPress={() => navigation.navigate("Options")}
                     >
                         <Image
@@ -76,6 +77,7 @@ export default function Home({ navigation }) {
                         >
                             <Text style={globalStyles.heading}>Previous</Text>
                             <TouchableOpacity
+                                activeOpacity={0.5}
                                 onPress={() =>
                                     navigation.navigate("AllWorkouts")
                                 }

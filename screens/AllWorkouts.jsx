@@ -1,12 +1,58 @@
-import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import React, { useContext } from "react";
+import {
+    StyleSheet,
+    Text,
+    View,
+    StatusBar,
+    TouchableOpacity,
+    Image,
+    FlatList,
+} from "react-native";
 import { globalStyles } from "../styles/global";
+import { WorkoutsContext } from "../WorkoutsContext";
+import TouchableWorkoutListItem from "../shared/workoutListItem";
 
-export default function AllWorkouts() {
+export default function AllWorkouts({ navigation }) {
+    const [workouts, setWorkouts] = useContext(WorkoutsContext);
+
     return (
-        <View style={globalStyles.container}>
+        <View style={globalStyles.alternateContainer}>
             <StatusBar backgroundColor='#000000' barStyle='light-content' />
-            <Text style={globalStyles.text}>All Workouts Screen</Text>
+            <View
+                style={{
+                    paddingBottom: 8,
+                    marginBottom: 8,
+                }}
+            >
+                <TouchableOpacity
+                    style={{
+                        width: 20,
+                        paddingVertical: 5,
+                    }}
+                    onPress={() => navigation.goBack()}
+                >
+                    <Image
+                        source={require("../assets/arrow.png")}
+                        style={globalStyles.icon}
+                    />
+                </TouchableOpacity>
+                <View style={{ marginTop: 64 }}>
+                    <Text style={globalStyles.heading}>All Workouts</Text>
+                </View>
+            </View>
+            {/* List */}
+            <FlatList
+                data={workouts}
+                keyExtractor={(item) => item.startedAt}
+                renderItem={({ item }) => (
+                    <TouchableWorkoutListItem
+                        name={item.name}
+                        date={item.startedAt}
+                        exercises={item.exercises}
+                        navigation={navigation}
+                    />
+                )}
+            />
         </View>
     );
 }

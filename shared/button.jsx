@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
 export default function FlatButton({ text, onPress }) {
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity activeOpacity={0.85} onPress={onPress}>
             <View style={styles.button}>
                 <Text style={styles.text}>{text}</Text>
             </View>
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     text: {
         color: "#121212",
         fontFamily: "rhd-bold",
-        // fontWeight: "500",
         fontSize: 16,
         textAlign: "center",
     },

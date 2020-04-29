@@ -76,6 +76,12 @@ export const WorkoutsProvider = (props) => {
                     reps: 10,
                     weight: 10,
                 },
+                {
+                    name: "Pull Ups",
+                    sets: 3,
+                    reps: 10,
+                    weight: 0,
+                },
             ],
         },
         {
