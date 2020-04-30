@@ -60,7 +60,6 @@ export default function ActiveWorkout({ navigation, route }) {
                     ...old,
                 ];
             });
-            console.log(exercises);
             setName("");
             setSets("");
             setReps("");
