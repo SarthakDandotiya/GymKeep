@@ -55,7 +55,7 @@ export default function AllWorkouts({ navigation }) {
                 renderItem={({ item }) => (
                     <TouchableWorkoutListItem
                         name={item.name}
-                        date={item.startedAt}
+                        startedAt={item.startedAt}
                         exercises={item.exercises}
                         navigation={navigation}
                         longPressHandler={longPressHandler}

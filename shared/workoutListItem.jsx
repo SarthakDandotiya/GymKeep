@@ -3,24 +3,25 @@ import { StyleSheet, TouchableHighlight, Text, View } from "react-native";
 
 export default function TouchableWorkoutListItem({
     name,
-    date,
+    startedAt,
     navigation,
     exercises,
     longPressHandler,
 }) {
-    let d = new Date(date);
+    let d = new Date(startedAt);
     let formattedDate =
         d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
-    let data = {
-        name: name,
-        formattedDate: formattedDate,
-        exercises: exercises,
-    };
 
     return (
         <TouchableHighlight
-            onPress={() => navigation.navigate("CompletedWorkout", data)}
-            onLongPress={() => longPressHandler(date)}
+            onPress={() =>
+                navigation.navigate("CompletedWorkout", {
+                    name,
+                    formattedDate,
+                    exercises,
+                })
+            }
+            onLongPress={() => longPressHandler(startedAt)}
             style={{ marginVertical: 8 }}
         >
             <View style={styles.item}>

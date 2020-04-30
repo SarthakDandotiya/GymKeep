@@ -7,6 +7,7 @@ import {
     TextInput,
     TouchableWithoutFeedback,
     Keyboard,
+    Alert,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { TouchableHighlight, ScrollView } from "react-native-gesture-handler";
@@ -15,8 +16,10 @@ import TouchableWorkoutListItem from "../shared/workoutListItem";
 import { WorkoutsContext } from "../WorkoutsContext";
 
 export default function Home({ navigation }) {
+    let syncFlag = false;
+
     const [workouts, setWorkouts] = useContext(WorkoutsContext);
-    // const [workoutName, setWorkoutName] = useState("");
+    const [workoutName, setWorkoutName] = useState("");
 
     const longPressHandler = (timeStamp) => {
         setWorkouts((oldWorkouts) => {
@@ -26,8 +29,31 @@ export default function Home({ navigation }) {
         });
     };
 
-    const handleTextChange = (text) => {
+    const textChangeHandler = (text) => {
         setWorkoutName(text);
+    };
+
+    const beginWorkoutHandler = () => {
+        if (workoutName.length > 2) {
+            if (syncFlag === false) {
+                syncFlag = true;
+                const startedAt = Date.parse(new Date().toJSON());
+                navigation.navigate("ActiveWorkout", {
+                    name: workoutName,
+                    startedAt,
+                });
+                setTimeout(() => {
+                    syncFlag = false;
+                }, 2000);
+                setWorkoutName("");
+                clearInterval();
+            }
+        } else {
+            Alert.alert(
+                "Oops!",
+                "Workout name must be atleast 3 characters long..."
+            );
+        }
     };
 
     return (
@@ -35,7 +61,7 @@ export default function Home({ navigation }) {
             <View style={globalStyles.container}>
                 <StatusBar backgroundColor='#000000' barStyle='light-content' />
                 {/* Header */}
-                <View style={globalStyles.homeHeader}>
+                <View style={globalStyles.alternateHeader}>
                     <View>
                         <Text style={globalStyles.brand}>Gym</Text>
                         <Text style={globalStyles.brand}>Keep</Text>
@@ -45,7 +71,6 @@ export default function Home({ navigation }) {
                     >
                         <Image
                             source={require("../assets/menu.png")}
-                            // source={require("../assets/defaultUserImage.png")}
                             style={globalStyles.dp}
                         />
                     </TouchableHighlight>
@@ -62,14 +87,13 @@ export default function Home({ navigation }) {
                         <Text style={globalStyles.heading}>New</Text>
                         <TextInput
                             style={globalStyles.textInput}
-                            placeholder='Type here to translate!'
-                            onChangeText={(text) => handleTextChange(text)}
+                            onChangeText={(text) => textChangeHandler(text)}
+                            value={workoutName}
                             placeholder='Workout Name'
-                            placeholderTextColor='#777777'
                         />
                         <FlatButton
                             text='Begin'
-                            onPress={() => navigation.navigate("ActiveWorkout")}
+                            onPress={beginWorkoutHandler}
                         />
                     </View>
                     {/* Previous Section */}
@@ -114,12 +138,12 @@ export default function Home({ navigation }) {
                                     </Text>
                                 </View>
                             ) : (
-                                workouts.slice(-3).map((item) => {
+                                workouts.slice(0, 3).map((item) => {
                                     return (
                                         <TouchableWorkoutListItem
                                             key={item.startedAt}
                                             name={item.name}
-                                            date={item.startedAt}
+                                            startedAt={item.startedAt}
                                             exercises={item.exercises}
                                             navigation={navigation}
                                             longPressHandler={longPressHandler}

@@ -5,6 +5,10 @@ import { FlatList } from "react-native-gesture-handler";
 import ExerciseListItem from "../shared/exerciseListItem";
 
 export default function CompletedWorkout({ navigation, route }) {
+    const longPressHandler = (data) => {
+        // Empty Function to provide the prop but not the functionality
+    };
+
     return (
         <View style={globalStyles.alternateContainer}>
             <StatusBar backgroundColor='#000000' barStyle='light-content' />
@@ -42,7 +46,12 @@ export default function CompletedWorkout({ navigation, route }) {
                 keyExtractor={(item) =>
                     item.name + item.sets.toString() + item.reps.toString()
                 }
-                renderItem={({ item }) => <ExerciseListItem exercise={item} />}
+                renderItem={({ item }) => (
+                    <ExerciseListItem
+                        exercise={item}
+                        longPressHandler={longPressHandler}
+                    />
+                )}
             />
         </View>
     );

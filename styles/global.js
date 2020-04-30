@@ -8,7 +8,6 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: "#121212",
         flexDirection: "column",
         justifyContent: "space-between",
-        // alignItems: "center",
     },
     alternateContainer: {
         flex: 1,
@@ -16,7 +15,6 @@ export const globalStyles = StyleSheet.create({
         paddingHorizontal: 32,
         backgroundColor: "#121212",
         flexDirection: "column",
-        // justifyContent: "space-between",
     },
     text: {
         color: "#ffffff",
@@ -63,15 +61,12 @@ export const globalStyles = StyleSheet.create({
         alignItems: "center",
         marginBottom: 64,
     },
-    homeHeader: {
+    alternateHeader: {
         flex: 0,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         marginBottom: 32,
-        // marginBottom: 194,
-        // borderColor: "red",
-        // borderWidth: 1,
     },
     dp: {
         height: 40,
@@ -80,6 +75,11 @@ export const globalStyles = StyleSheet.create({
     icon: {
         height: 20,
         width: 20,
+        padding: 5,
+    },
+    alternateIcon: {
+        height: 20,
+        width: 24,
         padding: 5,
     },
     bicep: {
@@ -99,6 +99,6 @@ export const globalStyles = StyleSheet.create({
         color: "#121212",
         backgroundColor: "#ffffff",
         marginTop: 8,
-        marginBottom: 16,
+        marginBottom: 8,
     },
 });

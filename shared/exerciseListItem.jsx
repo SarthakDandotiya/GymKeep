@@ -1,22 +1,29 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
-export default function ExerciseListItem({ exercise }) {
+export default function ExerciseListItem({
+    exercise,
+    startedAt,
+    longPressHandler,
+}) {
     return (
-        <View style={styles.itemContainer}>
-            <View style={styles.left}>
-                <Text style={globalStyles.text}>{exercise.name}</Text>
-                <Text style={globalStyles.text777}>
-                    {exercise.weight === 0 || exercise.weight === null
-                        ? "Body Weight"
-                        : exercise.weight + " Kg"}
+        <TouchableHighlight onLongPress={() => longPressHandler(startedAt)}>
+            <View style={styles.itemContainer}>
+                <View style={styles.left}>
+                    <Text style={globalStyles.text}>{exercise.name}</Text>
+                    <Text style={globalStyles.text777}>
+                        {exercise.weight === 0 || exercise.weight === null
+                            ? "Body Weight"
+                            : exercise.weight + " Kg"}
+                    </Text>
+                </View>
+                <Text style={styles.counts}>
+                    {exercise.sets + " x " + exercise.reps}
                 </Text>
             </View>
-            <Text style={styles.counts}>
-                {exercise.sets + " x " + exercise.reps}
-            </Text>
-        </View>
+        </TouchableHighlight>
     );
 }
 
