@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
     Text,
     View,
@@ -8,11 +8,12 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     Alert,
+    AsyncStorage,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { TouchableHighlight, ScrollView } from "react-native-gesture-handler";
 import FlatButton from "../shared/button";
-import TouchableWorkoutListItem from "../shared/workoutListItem";
+import TouchableWorkoutListItem from "../shared/workoutItem";
 import { WorkoutsContext } from "../WorkoutsContext";
 
 export default function Home({ navigation }) {
@@ -58,6 +59,7 @@ export default function Home({ navigation }) {
 
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            {}
             <View style={globalStyles.container}>
                 <StatusBar backgroundColor='#000000' barStyle='light-content' />
                 {/* Header */}
@@ -66,14 +68,14 @@ export default function Home({ navigation }) {
                         <Text style={globalStyles.brand}>Gym</Text>
                         <Text style={globalStyles.brand}>Keep</Text>
                     </View>
-                    <TouchableHighlight
+                    {/* <TouchableHighlight
                         onPress={() => navigation.navigate("Options")}
                     >
                         <Image
                             source={require("../assets/menu.png")}
                             style={globalStyles.dp}
                         />
-                    </TouchableHighlight>
+                    </TouchableHighlight> */}
                 </View>
                 {/* Image */}
                 <Image

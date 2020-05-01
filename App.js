@@ -27,7 +27,7 @@ export default function App() {
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName='Home' headerMode='none'>
                         <Stack.Screen name='Home' component={Home} />
-                        <Stack.Screen name='Options' component={Options} />
+                        {/* <Stack.Screen name='Options' component={Options} /> */}
                         <Stack.Screen
                             name='ActiveWorkout'
                             component={ActiveWorkout}

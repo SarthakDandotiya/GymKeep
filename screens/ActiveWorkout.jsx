@@ -15,7 +15,7 @@ import { globalStyles } from "../styles/global";
 import FlatButton from "../shared/button";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { WorkoutsContext } from "../WorkoutsContext";
-import ExerciseListItem from "../shared/exerciseListItem";
+import ExerciseListItem from "../shared/exerciseItem";
 
 export default function ActiveWorkout({ navigation, route }) {
     const [workouts, setWorkouts] = useContext(WorkoutsContext);

@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, StatusBar, TouchableHighlight, Image } from "react-native";
 import { globalStyles } from "../styles/global";
 import { FlatList } from "react-native-gesture-handler";
-import ExerciseListItem from "../shared/exerciseListItem";
+import ExerciseListItem from "../shared/exerciseItem";
 
 export default function CompletedWorkout({ navigation, route }) {
     const longPressHandler = (data) => {

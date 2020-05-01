@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { WorkoutsContext } from "../WorkoutsContext";
-import TouchableWorkoutListItem from "../shared/workoutListItem";
+import TouchableWorkoutListItem from "../shared/workoutItem";
 
 export default function AllWorkouts({ navigation }) {
     const [workouts, setWorkouts] = useContext(WorkoutsContext);
