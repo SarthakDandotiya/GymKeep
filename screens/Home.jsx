@@ -35,13 +35,14 @@ export default function Home({ navigation }) {
       .then((data) => {
         if (data !== null) {
           // if(data !== null)
-          console.log("From Promise:\n\n", data);
+          // console.log("From Promise:\n\n", data);
           setWorkouts(JSON.parse(data));
         } else {
           setWorkouts([]);
         }
       })
-      .done(console.log("Populated Initially"));
+      .catch((err) => console.error("Error Fetching"));
+    // .done(console.log("Populated Initially"));
   };
 
   const longPressHandler = (timeStamp) => {
