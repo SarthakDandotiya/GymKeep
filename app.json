@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Gym Keep",
+    "description": "An app to log your workouts and keep a track",
     "slug": "gymkeep",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
@@ -17,6 +18,9 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false
+    },
+    "android": {
+      "package": "com.sarthakdandotiya.gymkeep"
     }
   }
 }
