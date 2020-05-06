@@ -1,6 +1,6 @@
 # Gym Keep
 
-Get it [here](https://play.google.com/store/apps/details?id=com.sarthakdandotiya.gymkeep).
+Get it for Android devices [here](https://play.google.com/store/apps/details?id=com.sarthakdandotiya.gymkeep).
 
 ![logo](showcase.png)
 
